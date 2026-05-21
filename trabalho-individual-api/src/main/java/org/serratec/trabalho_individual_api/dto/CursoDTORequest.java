@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 public class CursoDTORequest {
 	
-		
+	
 	@NotBlank(message = "O nome é obrigatório")
 	@Size(max = 50)
 	private String nome;
@@ -21,16 +21,20 @@ public class CursoDTORequest {
 	private Integer cargaHoraria;
 	
 	
+	private Long professorId;
+	
+	
 	public CursoDTORequest() {
 		super();
 	}
 
 
-	public CursoDTORequest( String nome, String area, Integer cargaHoraria) {
+	public CursoDTORequest( String nome, String area, Integer cargaHoraria, Long professorId) {
 		super();
 		this.nome = nome;
 		this.area = area;
 		this.cargaHoraria = cargaHoraria;
+		this.professorId = professorId;
 	}
 	
 
@@ -62,6 +66,16 @@ public class CursoDTORequest {
 
 	public void setCargaHoraria(Integer cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
+	}
+
+
+	public Long getProfessorId() {
+		return professorId;
+	}
+
+
+	public void setProfessorId(Long professorId) {
+		this.professorId = professorId;
 	}
 	
 }

@@ -5,46 +5,48 @@ import java.time.LocalDate;
 import org.serratec.trabalho_individual_api.domain.StatusMatricula;
 
 
-public class MatriculaDtoRequest {
+public class MatriculaDTORequest {
 
-	private Long idAluno;
-	private Long idCurso;
+	private Long alunoId;
+	private Long cursoId;
 	private StatusMatricula status;
 	private LocalDate dataMatricula;
 	
 	
 	
-	public MatriculaDtoRequest() {
+	public MatriculaDTORequest() {
 		super();
 	}
 	
 
-	public MatriculaDtoRequest(Long idAluno, Long idCurso, StatusMatricula status, LocalDate dataMatricula) {
+	public MatriculaDTORequest(Long alunoId, Long cursoId, StatusMatricula status, LocalDate dataMatricula) {
 		super();
 		this.status = status;
 		this.dataMatricula = dataMatricula;
+		this.alunoId = alunoId;
+		this.cursoId = cursoId;
 	}
 
 
-
-	public Long getIdAluno() {
-		return idAluno;
+	public Long getAlunoId() {
+		return alunoId;
 	}
 
 
-	public void setIdAluno(Long idAluno) {
-		this.idAluno = idAluno;
+	public void setAlunoId(Long alunoId) {
+		this.alunoId = alunoId;
 	}
 
 
-	public Long getIdCurso() {
-		return idCurso;
+	public Long getCursoId() {
+		return cursoId;
 	}
 
 
-	public void setIdCurso(Long idCurso) {
-		this.idCurso = idCurso;
+	public void setCursoId(Long cursoId) {
+		this.cursoId = cursoId;
 	}
+
 
 	public StatusMatricula getStatus() {
 		return status;
@@ -63,5 +65,6 @@ public class MatriculaDtoRequest {
 
 	public void setDataMatricula(LocalDate dataMatricula) {
 		this.dataMatricula = dataMatricula;
-	}	
+	}
+
 }

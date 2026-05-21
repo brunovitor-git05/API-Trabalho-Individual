@@ -6,7 +6,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class PerfilSocialDTOResponse {
 	
-	private Long nomeAluno;
+	
+	private Long id;
+	private String nomeAluno;
 	private String redeSocial;
 	
 	
@@ -14,17 +16,31 @@ public class PerfilSocialDTOResponse {
 		super();
 	}
 	
-	public PerfilSocialDTOResponse(Long nomeAluno, String redeSocial) {
+	public PerfilSocialDTOResponse(Long id, String nomeAluno, String redeSocial) {
 		super();
+		this.id = id;
 		this.nomeAluno = nomeAluno;
 		this.redeSocial = redeSocial;
+		this.redeSocial = redeSocial;
+	}
+	
+	
+
+	public long getId() {
+		return id;
 	}
 
-	public Long getNomeAluno() {
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+
+	public String getNomeAluno() {
 		return nomeAluno;
 	}
 
-	public void setNomeAluno(Long nomeAluno) {
+	public void setNomeAluno(String nomeAluno) {
 		this.nomeAluno = nomeAluno;
 	}
 
@@ -35,7 +51,7 @@ public class PerfilSocialDTOResponse {
 	public void setRedeSocial(String redeSocial) {
 		this.redeSocial = redeSocial;
 	}
-	
+
 	
 	
 

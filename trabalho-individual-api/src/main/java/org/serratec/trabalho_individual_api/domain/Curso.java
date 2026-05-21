@@ -1,4 +1,4 @@
-package or.serratec.trabalho_individual_api.domain;
+package org.serratec.trabalho_individual_api.domain;
 
 
 import java.util.List;
@@ -13,7 +13,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -37,7 +39,8 @@ public class Curso {
 	@Schema(description = "Área de atuação", example = "Tecnologia")
 	private String area;
 		
-	@NotBlank(message = "A carga horária é obrigatória")
+	@NotNull(message = "A carga horária é obrigatória")
+	@Min(value = 1, message = "A carga horária deve ser maior que zero")
 	@Column(nullable = false)
 	@Schema(description = "Duração do curso em horas", example = "3600")
 	private Integer cargaHoraria;
@@ -115,5 +118,4 @@ public class Curso {
 	public void setMatriculas(List<Matricula> matriculas) {
 		this.matriculas = matriculas;
 	}
-	
 }

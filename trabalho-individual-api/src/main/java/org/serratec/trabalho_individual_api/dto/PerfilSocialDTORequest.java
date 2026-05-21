@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 
 public class PerfilSocialDTORequest {
 	
-	private Long alunoId;
+	private Long idAluno;
 	
 	@NotBlank(message = "Uma rede social obrigatória.")
 	private String redeSocial;
@@ -15,13 +15,21 @@ public class PerfilSocialDTORequest {
 	}
 	
 	
-	public PerfilSocialDTORequest(Long alunoId, String redeSocial) {
+	public PerfilSocialDTORequest(Long idAluno, String redeSocial) {
 		super();
-		this.alunoId = alunoId;
+		this.idAluno = idAluno;
 		this.redeSocial = redeSocial;
 	}
 	
-	
+
+	public Long getIdAluno() {
+		return idAluno;
+	}
+
+
+	public void setIdAluno(Long idAluno) {
+		this.idAluno = idAluno;
+	}
 	
 	
 	public String getRedeSocial() {
@@ -33,12 +41,4 @@ public class PerfilSocialDTORequest {
 	}
 
 
-	public Long getAlunoId() {
-		return alunoId;
-	}
-
-
-	public void setAlunoId(Long alunoId) {
-		this.alunoId = alunoId;
-	}
 }

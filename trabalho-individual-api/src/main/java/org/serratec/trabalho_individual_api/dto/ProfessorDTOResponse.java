@@ -1,5 +1,7 @@
 package org.serratec.trabalho_individual_api.dto;
 
+import java.time.LocalDate;
+
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"id", "nome", "cpf", "email", "especialidade"})
@@ -65,6 +67,15 @@ public class ProfessorDTOResponse {
 
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
+	}
+	
+	public LocalDate getDataNascimento() {
+		return null;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		
+		
 	}
 	
 	

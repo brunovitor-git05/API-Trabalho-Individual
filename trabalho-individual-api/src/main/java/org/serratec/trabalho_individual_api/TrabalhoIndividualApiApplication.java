@@ -1,4 +1,4 @@
-package or.serratec.trabalho_individual_api;
+package org.serratec.trabalho_individual_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

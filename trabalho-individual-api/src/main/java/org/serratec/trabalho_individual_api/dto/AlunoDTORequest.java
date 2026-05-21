@@ -3,8 +3,6 @@ package org.serratec.trabalho_individual_api.dto;
 import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
-
-import jakarta.persistence.Column;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

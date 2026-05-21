@@ -1,4 +1,4 @@
-package or.serratec.trabalho_individual_api.domain;
+package org.serratec.trabalho_individual_api.domain;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
