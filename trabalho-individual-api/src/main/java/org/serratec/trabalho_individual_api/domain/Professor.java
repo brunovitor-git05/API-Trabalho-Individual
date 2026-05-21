@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -48,7 +50,7 @@ public class Professor {
 	@Column(name = "especialidade", length = 100)
 	private String especialidade;
 	
-
+	@JsonManagedReference
 	@OneToMany(mappedBy = "professor")
 	@Schema(description = "Lista de cursos ministrados pelo professor")
 	private List<Curso> cursos;

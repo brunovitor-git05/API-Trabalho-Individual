@@ -4,12 +4,17 @@ import java.time.LocalDate;
 
 import org.serratec.trabalho_individual_api.domain.StatusMatricula;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 
 public class MatriculaDTORequest {
-
+	@Schema(description = "ID do aluno", example = "1")
 	private Long alunoId;
+	@Schema(description = "ID do curso", example = "2")
 	private Long cursoId;
+	@Schema(description = "Status da matrícula", example = "ATIVA")
 	private StatusMatricula status;
+	@Schema(description = "Data da matrícula", example = "2024-01-01")
 	private LocalDate dataMatricula;
 	
 	

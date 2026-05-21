@@ -1,8 +1,9 @@
 package org.serratec.trabalho_individual_api.dto;
 
-import jakarta.validation.constraints.Min;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
 public class CursoDTORequest {
@@ -10,14 +11,17 @@ public class CursoDTORequest {
 	
 	@NotBlank(message = "O nome é obrigatório")
 	@Size(max = 50)
+	@Schema(description = "Nome do curso", example = "Java")
 	private String nome;
 		
 	@NotBlank(message = "A área é obrigatória")
 	@Size(max = 30)
+	@Schema(description = "Área do curso", example = "Programação")
 	private String area;
 		
 	@NotNull(message = "A carga horária é obrigatória")
-	@Min(value = 1, message = "A carga horária deve ser maior que zero")
+	@Positive(message = "A carga horária deve ser positiva")
+	@Schema(description = "Carga horária do curso", example = "40")
 	private Integer cargaHoraria;
 	
 	

@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,11 +48,12 @@ public class Aluno {
 	private LocalDate dataNascimento;
 	
 	
-	
+	@JsonManagedReference
 	@OneToOne(mappedBy = "aluno")
 	@Schema(description = "Perfil Social do aluno")
 	private PerfilSocial perfilSocial;
 	
+	@JsonManagedReference
 	@OneToMany(mappedBy = "aluno")
 	@Schema(description = "Lista de matrículas do aluno")
 	private List<Matricula> matricula;

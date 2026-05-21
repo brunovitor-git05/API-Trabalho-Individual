@@ -7,6 +7,7 @@ import org.serratec.trabalho_individual_api.domain.Curso;
 import org.serratec.trabalho_individual_api.domain.Professor;
 import org.serratec.trabalho_individual_api.dto.CursoDTORequest;
 import org.serratec.trabalho_individual_api.dto.CursoDTOResponse;
+import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.CursoRepository;
 import org.serratec.trabalho_individual_api.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class CursoService {
 	
 	public CursoDTOResponse buscar(Long id) {
 		Curso curso = cursoRepository.findById(id)
-			.orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+			.orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
 		
 		CursoDTOResponse cursoDTOResponse = new CursoDTOResponse();
 		cursoDTOResponse.setId(curso.getId());
@@ -68,7 +69,7 @@ public class CursoService {
 
 	 
 	    Professor professor = professorRepository.findById(cursoDTO.getProfessorId())
-	        .orElseThrow(() -> new RuntimeException("Professor não encontrado com id: " + cursoDTO.getProfessorId()));
+	        .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado com id: " + cursoDTO.getProfessorId()));
 	    curso.setProfessor(professor);
 
 	    curso = cursoRepository.save(curso);
@@ -85,14 +86,14 @@ public class CursoService {
 	
 	public CursoDTOResponse atualizar(Long id, CursoDTORequest cursoDTO) {
 			    Curso curso = cursoRepository.findById(id)
-	        .orElseThrow(() -> new RuntimeException("Curso não encontrado com id: " + id));
+	        .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado com id: " + id));
 
 	    curso.setNome(cursoDTO.getNome());
 	    curso.setArea(cursoDTO.getArea());
 	    curso.setCargaHoraria(cursoDTO.getCargaHoraria());
 
 	    Professor professor = professorRepository.findById(cursoDTO.getProfessorId())
-	        .orElseThrow(() -> new RuntimeException("Professor não encontrado com id: " + cursoDTO.getProfessorId()));
+	        .orElseThrow(() -> new ResourceNotFoundException("Professor não encontrado com id: " + cursoDTO.getProfessorId()));
 	    curso.setProfessor(professor);
 
 	    curso = cursoRepository.save(curso);
@@ -110,7 +111,7 @@ public class CursoService {
 	
 	public void deletar(Long id) {
 		Curso curso = cursoRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Curso não encontrado com id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado com id: " + id));
 		
 		cursoRepository.delete(curso);
 	}

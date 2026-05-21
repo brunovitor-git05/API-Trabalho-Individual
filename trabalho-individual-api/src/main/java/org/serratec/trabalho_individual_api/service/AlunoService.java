@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.serratec.trabalho_individual_api.domain.Aluno;
 import org.serratec.trabalho_individual_api.dto.AlunoDTORequest;
 import org.serratec.trabalho_individual_api.dto.AlunoDTOResponse;
+import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -61,8 +62,7 @@ public class AlunoService {
 	
 	public AlunoDTOResponse buscar(Long id) {
 		Aluno aluno = alunoRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Aluno não encontrado com id: " + id));
-		
+				.orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado com id: " + id));
 		
 		AlunoDTOResponse alunoDTOResponse = new AlunoDTOResponse();
 		alunoDTOResponse.setId(aluno.getId());
@@ -79,7 +79,7 @@ public class AlunoService {
 		Optional<Aluno> alunoOptional = alunoRepository.findById(id);
 		
 		if(alunoOptional.isEmpty()) {
-			throw new RuntimeException("Aluno não encontrado com id: " + id);
+			throw new ResourceNotFoundException("Aluno não encontrado com id: " + id);
 		}
 		
 		Aluno aluno = alunoOptional.get();
@@ -105,7 +105,7 @@ public class AlunoService {
 		Optional<Aluno> alunoOptional = alunoRepository.findById(id);
 		
 		if(alunoOptional.isEmpty()) {
-			throw new RuntimeException("Aluno não encontrado com id: " + id);
+			throw new ResourceNotFoundException("Aluno não encontrado com id: " + id);
 		}
 		
 		alunoRepository.deleteById(id);

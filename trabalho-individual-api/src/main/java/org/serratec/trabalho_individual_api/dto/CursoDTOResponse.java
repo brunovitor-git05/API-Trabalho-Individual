@@ -2,6 +2,8 @@ package org.serratec.trabalho_individual_api.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @JsonPropertyOrder({
 	"id",
 	"nome",
@@ -9,10 +11,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 	"cargaHoraria"
 })
 public class CursoDTOResponse {
-	
+	@Schema(description = "ID do curso", example = "1")
 	private Long id;
+	@Schema(description = "Nome do curso", example = "Java")
 	private String nome;
+	@Schema(description = "Área do curso", example = "Programação")
 	private String area;
+	@Schema(description = "Carga horária do curso", example = "40")
 	private Integer cargaHoraria;
 	
 	

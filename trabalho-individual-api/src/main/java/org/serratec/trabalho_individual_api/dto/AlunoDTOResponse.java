@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 
 @JsonPropertyOrder({
     "id",
@@ -15,11 +17,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 
 public class AlunoDTOResponse {
-	
+	@Schema(description = "ID do aluno", example = "1")
 	private Long id;
+	@Schema(description = "Nome do aluno", example = "Bruno")
 	private String nome;
+	@Schema(description = "CPF do aluno", example = "123.456.789-00")
 	private String cpf;
+	@Schema(description = "Email do aluno", example = "bruno.serratec@gmail.com")
 	private String email;
+	@Schema(description = "Data de nascimento do aluno", example = "1990-01-01")
 	private LocalDate dataNascimento;
 	
 	public AlunoDTOResponse() {

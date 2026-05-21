@@ -2,13 +2,17 @@ package org.serratec.trabalho_individual_api.dto;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @JsonPropertyOrder({"nomeAluno", "redeSocial"})
 
 public class PerfilSocialDTOResponse {
 	
-	
+	@Schema(description = "ID do perfil social", example = "1")
 	private Long id;
+	@Schema(description = "Nome do aluno", example = "Bruno")
 	private String nomeAluno;
+	@Schema(description = "Rede social do aluno", example = "LinkedIn")
 	private String redeSocial;
 	
 	

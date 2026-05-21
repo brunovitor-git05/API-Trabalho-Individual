@@ -2,6 +2,8 @@ package org.serratec.trabalho_individual_api.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,9 +31,11 @@ public class Matricula {
 	@Column(name = "data_matricula")
 	private LocalDate dataMatricula;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "id_aluno")
 	private Aluno aluno;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "id_curso")

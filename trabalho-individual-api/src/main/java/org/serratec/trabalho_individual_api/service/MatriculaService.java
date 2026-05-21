@@ -8,6 +8,7 @@ import org.serratec.trabalho_individual_api.domain.Curso;
 import org.serratec.trabalho_individual_api.domain.Matricula;
 import org.serratec.trabalho_individual_api.dto.MatriculaDTORequest;
 import org.serratec.trabalho_individual_api.dto.MatriculaDTOResponse;
+import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.AlunoRepository;
 import org.serratec.trabalho_individual_api.repository.CursoRepository;
 import org.serratec.trabalho_individual_api.repository.MatriculaRepository;
@@ -53,7 +54,7 @@ public class MatriculaService {
 	
 	public MatriculaDTOResponse buscar(Long id) {
 		Matricula matricula = matriculaRepository.findById(id)
-			.orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+			.orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 		
 		MatriculaDTOResponse matriculaDTOResponse = new MatriculaDTOResponse();
 		matriculaDTOResponse.setId(matricula.getId());
@@ -66,10 +67,10 @@ public class MatriculaService {
 	
 	public MatriculaDTOResponse inserir(MatriculaDTORequest matriculaDTO) {
 	    Aluno aluno = alunoRepository.findById(matriculaDTO.getAlunoId())
-	        .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+	        .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 
 	    Curso curso = cursoRepository.findById(matriculaDTO.getCursoId())
-	        .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+	        .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
 
 	    Matricula matricula = new Matricula();
 	    matricula.setAluno(aluno);
@@ -95,13 +96,13 @@ public class MatriculaService {
 	
 	public MatriculaDTOResponse atualizar(Long id, MatriculaDTORequest matriculaDTO) {
 	    Matricula matricula = matriculaRepository.findById(id)
-	        .orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+	        .orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 
 	    Aluno aluno = alunoRepository.findById(matriculaDTO.getAlunoId())
-	        .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+	        .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 
 	    Curso curso = cursoRepository.findById(matriculaDTO.getCursoId())
-	        .orElseThrow(() -> new RuntimeException("Curso não encontrado"));
+	        .orElseThrow(() -> new ResourceNotFoundException("Curso não encontrado"));
 
 	    matricula.setAluno(aluno);
 	    matricula.setCurso(curso);
@@ -122,7 +123,7 @@ public class MatriculaService {
 	
 	public void deletar(Long id) {
 		Matricula matricula = matriculaRepository.findById(id)
-			.orElseThrow(() -> new RuntimeException("Matrícula não encontrada"));
+			.orElseThrow(() -> new ResourceNotFoundException("Matrícula não encontrada"));
 		
 		matriculaRepository.delete(matricula);
 	}

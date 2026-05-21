@@ -6,6 +6,7 @@ import org.serratec.trabalho_individual_api.domain.Aluno;
 import org.serratec.trabalho_individual_api.domain.PerfilSocial;
 import org.serratec.trabalho_individual_api.dto.PerfilSocialDTORequest;
 import org.serratec.trabalho_individual_api.dto.PerfilSocialDTOResponse;
+import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.AlunoRepository;
 import org.serratec.trabalho_individual_api.repository.PerfilSocialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class PerfilSocialService {
 		PerfilSocial perfilSocial = new PerfilSocial();
 		
 		Aluno aluno = alunoRepository.findById(perfilSocialDTO.getIdAluno())
-			    .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+			    .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 			perfilSocial.setAluno(aluno);
 			perfilSocial.setRedeSocial(perfilSocialDTO.getRedeSocial());
 
@@ -63,7 +64,7 @@ public class PerfilSocialService {
 	
 	public PerfilSocialDTOResponse buscar(Long id) {
 		PerfilSocial perfilSocial = perfilSocialRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Perfil Social não encontrado com id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Perfil Social não encontrado com id: " + id));
 		
 		PerfilSocialDTOResponse perfilSocialDTOResponse = new PerfilSocialDTOResponse();
 		perfilSocialDTOResponse.setId(perfilSocial.getId());
@@ -76,10 +77,10 @@ public class PerfilSocialService {
 	
 	public PerfilSocialDTOResponse atualizar(Long id, PerfilSocialDTORequest perfilSocialDTO) {
 		PerfilSocial perfilSocial = perfilSocialRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Perfil Social não encontrado com id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Perfil Social não encontrado com id: " + id));
 		
 		Aluno aluno = alunoRepository.findById(perfilSocialDTO.getIdAluno())
-			    .orElseThrow(() -> new RuntimeException("Aluno não encontrado"));
+			    .orElseThrow(() -> new ResourceNotFoundException("Aluno não encontrado"));
 			perfilSocial.setAluno(aluno);
 			perfilSocial.setRedeSocial(perfilSocialDTO.getRedeSocial());
 		
@@ -97,7 +98,7 @@ public class PerfilSocialService {
 	
 	public void deletar(Long id) {
 		PerfilSocial perfilSocial = perfilSocialRepository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Perfil Social não encontrado com id: " + id));
+				.orElseThrow(() -> new ResourceNotFoundException("Perfil Social não encontrado com id: " + id));
 		
 		perfilSocialRepository.delete(perfilSocial);
 	}

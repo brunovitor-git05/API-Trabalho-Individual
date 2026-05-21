@@ -3,6 +3,8 @@ package org.serratec.trabalho_individual_api.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,12 +48,13 @@ public class Curso {
 	private Integer cargaHoraria;
 	
 	
-	
+	@JsonBackReference
 	@ManyToOne
 	@Schema(description = "Professor responsável pelo curso")
 	@JoinColumn(name = "id_professor", nullable = false)
 	private Professor professor;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy = "curso")
 	@Schema(description = "Lista de matrículas associadas ao curso")
 	private List<Matricula> matriculas;

@@ -6,15 +6,21 @@ import org.serratec.trabalho_individual_api.domain.StatusMatricula;
 
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 @JsonPropertyOrder({"id", "nomeAluno", "nomeCurso", "status", "dataMatricula",})
 
 
 public class MatriculaDTOResponse {
-	
+	@Schema(description = "ID da matrícula", example = "1")
 	private Long id;
+	@Schema(description = "Nome do aluno", example = "Bruno")
 	private String nomeAluno;
+	@Schema(description = "Nome do curso", example = "Java")
 	private String nomeCurso;
+	@Schema(description = "Status da matrícula", example = "ATIVA")
 	private StatusMatricula status;
+	@Schema(description = "Data da matrícula", example = "2024-01-01")
 	private LocalDate dataMatricula;
 	
 	
