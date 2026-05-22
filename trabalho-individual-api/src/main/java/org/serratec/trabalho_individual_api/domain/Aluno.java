@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -49,12 +50,12 @@ public class Aluno {
 	
 	
 	@JsonManagedReference
-	@OneToOne(mappedBy = "aluno")
+	@OneToOne(mappedBy = "aluno", cascade = CascadeType.ALL)
 	@Schema(description = "Perfil Social do aluno")
 	private PerfilSocial perfilSocial;
 	
 	@JsonManagedReference
-	@OneToMany(mappedBy = "aluno")
+	@OneToMany(mappedBy = "aluno", cascade = CascadeType.ALL)
 	@Schema(description = "Lista de matrículas do aluno")
 	private List<Matricula> matricula;
 

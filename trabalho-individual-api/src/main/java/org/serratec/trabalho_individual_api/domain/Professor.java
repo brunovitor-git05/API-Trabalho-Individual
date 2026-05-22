@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,7 +52,7 @@ public class Professor {
 	private String especialidade;
 	
 	@JsonManagedReference
-	@OneToMany(mappedBy = "professor")
+	@OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
 	@Schema(description = "Lista de cursos ministrados pelo professor")
 	private List<Curso> cursos;
 	

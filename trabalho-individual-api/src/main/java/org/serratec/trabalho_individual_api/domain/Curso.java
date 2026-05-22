@@ -6,6 +6,7 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -55,7 +56,7 @@ public class Curso {
 	private Professor professor;
 	
 	@JsonBackReference
-	@OneToMany(mappedBy = "curso")
+	@OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
 	@Schema(description = "Lista de matrículas associadas ao curso")
 	private List<Matricula> matriculas;
 	
