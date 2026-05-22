@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.serratec.trabalho_individual_api.domain.Professor;
 import org.serratec.trabalho_individual_api.dto.ProfessorDTORequest;
 import org.serratec.trabalho_individual_api.dto.ProfessorDTOResponse;
+import org.serratec.trabalho_individual_api.exception.DuplicateEntryException;
 import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.ProfessorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,10 @@ public class ProfessorService {
 
 
 	public ProfessorDTOResponse inserir(ProfessorDTORequest professorDTO) {
+		
+		if(professorRepository.findByCpf(professorDTO.getCpf()).isPresent()) {
+		    throw new DuplicateEntryException("CPF já cadastrado: " + professorDTO.getCpf());
+		}
 		
 		Professor professor = new Professor();
 		professor.setNome(professorDTO.getNome());

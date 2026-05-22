@@ -8,5 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ProfessorRepository extends JpaRepository<Professor, Long> {
 	
 	Optional<Professor> findByEspecialidade(String especialidade);
+	Optional<Professor> findByCpf(String cpf);
 
 }

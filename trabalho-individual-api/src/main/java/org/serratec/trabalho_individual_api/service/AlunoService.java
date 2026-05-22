@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.serratec.trabalho_individual_api.domain.Aluno;
 import org.serratec.trabalho_individual_api.dto.AlunoDTORequest;
 import org.serratec.trabalho_individual_api.dto.AlunoDTOResponse;
+import org.serratec.trabalho_individual_api.exception.DuplicateEntryException;
 import org.serratec.trabalho_individual_api.exception.ResourceNotFoundException;
 import org.serratec.trabalho_individual_api.repository.AlunoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,14 @@ public class AlunoService {
 
 
 	public AlunoDTOResponse inserir(AlunoDTORequest alunoDTO) {
+		
+		if(alunoRepository.findByCpf(alunoDTO.getCpf()).isPresent()) {
+		    throw new DuplicateEntryException("CPF já cadastrado: " + alunoDTO.getCpf());
+		}
+		
+		if(alunoRepository.findByEmail(alunoDTO.getEmail()).isPresent()) {
+		    throw new DuplicateEntryException("Email já cadastrado: " + alunoDTO.getEmail());
+		}
 		
 		Aluno aluno = new Aluno();
 		aluno.setNome(alunoDTO.getNome());

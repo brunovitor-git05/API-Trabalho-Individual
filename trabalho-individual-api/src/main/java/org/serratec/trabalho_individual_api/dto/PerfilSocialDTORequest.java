@@ -10,7 +10,7 @@ public class PerfilSocialDTORequest {
 	
 	@NotBlank(message = "Uma rede social obrigatória.")
 	@Schema(description = "Rede social do aluno", example = "LinkedIn")
-	@Pattern(regexp = "^(http?://).+", message = "A rede social deve ser uma URL válida.")
+	@Pattern(regexp = "^(https?://).+", message = "A rede social deve ser uma URL válida.")
 	private String redeSocial;
 
 	
