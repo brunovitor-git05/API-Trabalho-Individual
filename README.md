@@ -1,4 +1,4 @@
-# 👤 Nome do Aluno
+## 👤 Nome do Aluno
 
 Bruno Vitor Cordeiro Gomes
 
@@ -126,12 +126,13 @@ API REST desenvolvida para gerenciamento de uma plataforma de cursos comunitári
 
 ---
 
-## 🖼️ Imagem do Swagger
+## 📖 Swagger
 
-![Swagger UI](./docs/swagger.png)
+Acesse: `http://localhost:8080/swagger-ui.html`
 
 ---
 
 ## 📝 Observações Relevantes
 
-- 🪪 **CPF:** Os CPFs precisam ser matematicamente válidos com dígitos verificadores corretos. Acesse o site https://www.4devs.com.br/gerador_de_cpf e gere um, caso dê algum erro.
+- 🪪 **CPF:** Os CPFs precisam ser matematicamente válidos com dígitos verificadores corretos, sem pontos e sem traços.
+Acesse o site https://www.4devs.com.br/gerador_de_cpf e gere um, caso dê algum erro.
